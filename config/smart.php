@@ -2,6 +2,6 @@
 
 return [
     'models' => [
-        
+        'App\\Models\\Account',
     ],
 ];
