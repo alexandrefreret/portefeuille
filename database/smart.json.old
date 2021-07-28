@@ -1,0 +1,97 @@
+{
+    "account": {
+        "model": "App\\Models\\Account",
+        "modelArgs": [],
+        "modelConnection": "mysql",
+        "fields": {
+            "account_id": {
+                "type": "increments",
+                "typeArgs": []
+            },
+            "account_inserted": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "useCurrent": true
+            },
+            "account_updated": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "rawDefault": "\\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')"
+            },
+            "account_valide": {
+                "type": "boolean",
+                "typeArgs": [],
+                "index": true,
+                "default": true
+            },
+            "account_name": {
+                "type": "string",
+                "typeArgs": []
+            },
+            "account_fees": {
+                "type": "decimal",
+                "typeArgs": [
+                    10,
+                    2
+                ]
+            },
+            "account_type": {
+                "type": "string",
+                "typeArgs": []
+            },
+            "user": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\User",
+                    "foreignKey": "account_user"
+                }
+            }
+        }
+    },
+    "account_configuration": {
+        "model": "App\\Models\\AccountConfiguration",
+        "modelArgs": [],
+        "modelConnection": "mysql",
+        "fields": {
+            "accountconfiguration_id": {
+                "type": "increments",
+                "typeArgs": []
+            },
+            "accountconfiguration_inserted": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "useCurrent": true
+            },
+            "accountconfiguration_updated": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "rawDefault": "\\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')"
+            },
+            "accountconfiguration_valide": {
+                "type": "boolean",
+                "typeArgs": [],
+                "index": true,
+                "default": true
+            },
+            "accountconfiguration_title": {
+                "type": "string",
+                "typeArgs": []
+            },
+            "accountconfiguration_fees": {
+                "type": "decimal",
+                "typeArgs": [
+                    10,
+                    2
+                ]
+            },
+            "accountconfiguration_type": {
+                "type": "enum",
+                "typeArgs": [
+                    "pourcentage",
+                    "numeraire"
+                ]
+            }
+        }
+    }
+}

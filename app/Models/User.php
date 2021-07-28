@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends AbstractAuthenticable
 {
     use HasFactory, Notifiable;
+
+    protected $table = "users";
+    public $primaryKey = "id";
 
     /**
      * The attributes that are mass assignable.
@@ -40,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    static public function isSoftDeletable()
+    {
+        return false;
+    }
+
+    static public function prefix()
+    {
+        return '';
+    }
 }
