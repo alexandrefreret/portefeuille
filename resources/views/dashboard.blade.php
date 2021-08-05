@@ -1,16 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="" class="btn btn-primary float-right">{{ __('Liste des trades') }}</a>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-8 text-right">
+                <a href="{{ route('trades') }}" class="btn btn-primary">{{ __('Liste des trades') }}</a>
             </div>
         </div>
     </div>

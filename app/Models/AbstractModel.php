@@ -133,8 +133,8 @@ abstract class AbstractModel extends Model
 		{
 			static::addGlobalScope('user', function (Builder $builder) {
 				$user = auth()->user();
-
-				if (is_array($user)) {
+				
+				if (!empty($user)) {
 					$user_col = static::prefix().'_user';
 					$builder->where($user_col, '=', $user->id)
 							->orWhere($user_col, '<=', 0);
