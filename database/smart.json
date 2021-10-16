@@ -119,6 +119,20 @@
                 "index": true,
                 "default": true
             },
+            "trades_price": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
+            "trades_qte": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
             "trades_amount": {
                 "type": "decimal",
                 "typeArgs": [
@@ -134,13 +148,6 @@
                 ]
             },
             "trades_pru": {
-                "type": "decimal",
-                "typeArgs": [
-                    14,
-                    8
-                ]
-            },
-            "trades_qte": {
                 "type": "decimal",
                 "typeArgs": [
                     14,
@@ -209,6 +216,14 @@
                 "belongsTo": {
                     "model": "App\\Models\\User",
                     "foreignKey": "pair_user"
+                }
+            },
+            "account": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\Account",
+                    "foreignKey": "pair_account"
                 }
             }
         }

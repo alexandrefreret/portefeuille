@@ -82,7 +82,7 @@
                 "type": "decimal",
                 "typeArgs": [
                     10,
-                    2
+                    4
                 ]
             },
             "accountconfiguration_type": {
@@ -91,6 +91,133 @@
                     "pourcentage",
                     "numeraire"
                 ]
+            }
+        }
+    },
+    "trades": {
+        "model": "App\\Models\\Trades",
+        "modelArgs": [],
+        "modelConnection": "mysql",
+        "fields": {
+            "trades_id": {
+                "type": "increments",
+                "typeArgs": []
+            },
+            "trades_inserted": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "useCurrent": true
+            },
+            "trades_updated": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "rawDefault": "\\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')"
+            },
+            "trades_valide": {
+                "type": "boolean",
+                "typeArgs": [],
+                "index": true,
+                "default": true
+            },
+            "trades_price": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
+            "trades_fees_amount": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
+            "trades_pru": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
+            "trades_qte": {
+                "type": "decimal",
+                "typeArgs": [
+                    14,
+                    8
+                ]
+            },
+            "trades_direction": {
+                "type": "boolean",
+                "typeArgs": [],
+                "default": 1
+            },
+            "pair": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\Pair",
+                    "foreignKey": "trades_pair"
+                }
+            },
+            "user": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\User",
+                    "foreignKey": "trades_user"
+                }
+            }
+        }
+    },
+    "pair": {
+        "model": "App\\Models\\Pair",
+        "modelArgs": [],
+        "modelConnection": "mysql",
+        "fields": {
+            "pair_id": {
+                "type": "increments",
+                "typeArgs": []
+            },
+            "pair_inserted": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "useCurrent": true
+            },
+            "pair_updated": {
+                "type": "timestamp",
+                "typeArgs": [],
+                "rawDefault": "\\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')"
+            },
+            "pair_valide": {
+                "type": "boolean",
+                "typeArgs": [],
+                "index": true,
+                "default": true
+            },
+            "pair_name": {
+                "type": "string",
+                "typeArgs": []
+            },
+            "pair_position": {
+                "type": "string",
+                "typeArgs": []
+            },
+            "user": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\User",
+                    "foreignKey": "pair_user"
+                }
+            },
+            "account": {
+                "type": "unsignedInteger",
+                "typeArgs": [],
+                "belongsTo": {
+                    "model": "App\\Models\\Account",
+                    "foreignKey": "pair_account"
+                }
             }
         }
     }

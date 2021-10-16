@@ -1,15 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-8 text-right">
-                <a href="{{ route('trades') }}" class="btn btn-primary">{{ __('Liste des trades') }}</a>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <a href="{{ route('trades') }}" class="btn btn-primary">{{ __('Liste des trades') }}</a>
+                    
+                </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
